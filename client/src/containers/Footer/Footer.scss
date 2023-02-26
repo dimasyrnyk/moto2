@@ -1,0 +1,59 @@
+@import '../../styles/colors.scss';
+
+/* ---------- MEDIA SCREEN -- MOBILE ---------- */
+@media (max-width: 650px){
+  .footer {
+    display: block;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+    
+    
+/* ---------- MEDIA SCREEN -- TABLET ---------- */
+@media screen and (min-width: 651px){
+  .footer {
+    display: block;
+    font-size: 16px;
+    width: 100%;
+  }
+}
+  
+  
+/* ---------- MEDIA SCREEN -- DESKTOP ---------- */
+@media screen and (min-width: 992px) {
+  .footer {
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    max-width: 1200px;
+  }
+}
+    
+    
+/* ---------- FOOTER ---------- */
+footer {
+  margin: 20px 0;
+  border-top: 1px solid $border_color_light;
+  background-color: $main_menu_background_color;
+}
+.footer__title {
+  font-size: 16px;
+  color: $text_color_black;
+  margin: 5px 0;
+}
+.footer {
+  margin: 0 auto;
+  padding: 20px;
+}
+.footer__menu,
+.footer__categories,
+.footer__contacts {
+  margin: 15px;
+}
+.footer__menu__list li {
+  list-style: none;
+}
+.footer__end {
+  text-align: center;
+}

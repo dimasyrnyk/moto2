@@ -1,0 +1,134 @@
+@import "../../styles//colors.scss";
+
+/* ---------- MEDIA SCREEN -- DESKTOP ---------- */
+@media screen and (min-width: 992px) {
+  .product__grid {
+    display: flex;
+    justify-content: space-around;
+  }
+  .product__price-section {
+    width: 120px;
+  }
+  .product__short-desc {
+    width: 30%;
+  }
+}
+
+/* ---------- MEDIA SCREEN -- MOBILE & TABLET ---------- */
+@media screen and (max-width: 991px) {
+  .product__grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .product__img {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .product__price-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 400px;
+    width: 80%;
+    margin: 30px 0;
+  }
+}
+
+/* ---------- PRODUCT PAGE ---------- */
+.product__title {
+  font-size: 20px;
+  margin: 15px 0;
+}
+.product__grid {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+.product__img {
+  max-width: 500px;
+}
+.product__price {
+  font-size: 18px;
+  font-weight: bold;
+  color: $text_color_black;
+}
+
+.product__full-desc {
+  margin-top: 20px;
+}
+.product__short-desc h5,
+.product__full-desc h5 {
+  font-size: 16px;
+}
+.admin__controls {
+  display: flex;
+  justify-content: space-around;
+  width: 300px;
+  margin: 0 auto;
+}
+.product__remove-btn,
+.product__edit-btn {
+  border: 1px solid $border_color_blue;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px;
+  background-color: $background_color_blue;
+  color: $text_color_white;
+}
+.product__remove-btn:hover,
+.product__edit-btn:hover {
+  background-color: $background_color_light;
+  color: $text_color_blue;
+}
+
+/* ---------- ADD PRODUCT PAGE ---------- */
+.add-product__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 8px;
+}
+.row__title {
+  color: #666666;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 5px;
+  width: 100%;
+}
+.row__input,
+.row__select,
+.row__textarea {
+  box-sizing: border-box;
+  outline: none;
+  padding: 5px;
+  border-radius: 3px;
+  border: 1px solid $border_color_dark;
+}
+.row__textarea {
+  height: 150px;
+}
+.controls {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 10px auto;
+}
+.controls__btn {
+  font-size: 16px;
+  background-color: $background_color_white;
+  color: $text_color_blue;
+  border: 2px solid $border_color_blue;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 5px 10px;
+}
+.controls__btn:hover {
+  background-color: $background_color_blue;
+  color: $links_hover_background_color;
+}

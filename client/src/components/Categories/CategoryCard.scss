@@ -1,0 +1,10 @@
+@import "../../styles//colors.scss";
+
+/* ---------- CATEGORY CARD ---------- */
+.category__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}

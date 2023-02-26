@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&subset=cyrillic");
+@import "./colors.scss";
+
+/* ---------- GENERAL ---------- */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  color: $main_text_color;
+  font-size: 14px;
+  line-height: 1.5em;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+a {
+  color: $links_color;
+  text-decoration: none;
+}
+a:hover {
+  color: $links_hover_color;
+}
+input {
+  border: none;
+  font-family: "Open Sans", Arial, sans-serif;
+  padding: 0;
+  -webkit-appearance: none;
+}
+.clearfix {
+  *zoom: 1;
+} /* For IE 6/7 */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 78%;
+  padding: 15px 0;
+  margin: 10px auto;
+  font-size: 16px;
+  text-align: center;
+  color: $text_color_black;
+  border-radius: 4px;
+  opacity: 0.95;
+  z-index: 999;
+}
+
+.alert_red {
+  background-color: $alert_background_red;
+}
+
+.alert_green {
+  background-color: $alert_background_green;
+}

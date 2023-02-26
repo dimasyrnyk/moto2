@@ -1,0 +1,162 @@
+/* ---------- MEDIA SCREEN -- MOBILE ---------- */
+@media (max-width: 650px){
+  .modal__body {
+    width: 100vw;
+    height: 100vh;
+  }
+  .login_form form input[type="text"], input[type="password"] {
+    font-size: 16px;
+  }
+
+}
+  
+/* ---------- MEDIA SCREEN -- TABLET && DESKTOP ---------- */
+@media (min-width: 651px){
+  .modal {
+    padding-top: 5rem;
+  }
+  .modal__body {
+    display: inline-table;
+    width: 400px;
+    min-height: 320px;
+    height: auto;
+    border-radius: 5px;
+  }
+
+}
+  
+
+
+/* ---------- LOGIN/REGISTER MODAL ---------- */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  z-index: 100;
+}
+.modal__body {
+  position: relative;
+  padding: 7vmin;
+  background: #fff;
+}
+.modal__close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #4682B4;
+  border: none;
+  margin: 10px;
+  padding: 2px 7px;
+}
+.modal__title {
+  color: #4682B4;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.login_form_size {
+	margin: 0 auto;
+	width: 280px;
+  border: none;
+}
+.login_form fieldset {
+  border: none;
+}
+.login_form .input_icon {
+	background-color: #d9d9d9;
+	border-radius: 3px 0px 0px 3px;
+	-moz-border-radius: 3px 0px 0px 3px;
+	-webkit-border-radius: 3px 0px 0px 3px;
+	color: #000000;
+	display: block;
+	float: left;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	width: 50px;
+}
+.login_form form input {
+	height: 50px;
+	outline:none;
+}
+.login_form form input[type="text"],
+input[type="password"] {
+	background-color: #e6e6e6;
+	border-radius: 0px 3px 3px 0px;
+	-moz-border-radius: 0px 3px 3px 0px;
+	-webkit-border-radius: 0px 3px 3px 0px;
+	color: #000000;
+	font-size: 16px;
+	margin-bottom: 1em;
+	padding: 0 16px;
+	width: 198px;
+}
+.login_form form input:focus {
+	color:#000000;
+}
+.login_form .wrapper {
+	text-align: center;
+}
+.formErrors p {
+  margin: -5px 0 5px 0;
+}
+
+.button {
+	border: 2px solid #4682B4;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #4682B4;
+	color: #fff;
+	font-weight: bold;
+	margin-bottom: 2em;
+	text-transform: uppercase;
+	cursor:pointer;
+}
+.button:hover {
+	background-color: #fff;
+	color: #4682B4;
+}
+.button_form  {
+	width: 280px;
+}
+.login_form_nav {
+  display: flex;
+  justify-content: space-around;
+}
+.login_form_nav_btn {
+  color: #303030;
+  outline: none;
+  border: 1px solid grey;
+  background-color: #F8F8F8;
+  border-radius: 3px;
+  padding: 2px 7px;
+}
+.login_form_nav_btn:hover {
+  color: #4682B4;
+  border-color: #4682B4;
+}
+
+
+/* ---------- AUTH USER MODAL ---------- */
+.modal_profile {
+  position: absolute;
+  top: 100px;
+  right: 200px;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+}
+.modal_profile_body {
+
+  padding: 7vmin;
+  background: #fff;
+}

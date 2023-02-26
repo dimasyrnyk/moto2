@@ -1,0 +1,263 @@
+@import '../../styles/colors.scss';
+
+/* ---------- MEDIA SCREEN -- MOBILE ---------- */
+@media (max-width: 700px){
+  .header__menu {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+  }
+  .header__menu__btn {
+    display: block;
+    margin: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+    border-right: 100%;
+    transition: background-color 0.4s;
+    color: $text_color_black;
+  }
+  .header__menu ul {
+    position: absolute;
+    display: none;
+    top: 35px;
+    left: 0;
+    background-color: $background_color_white;
+    z-index: 200;
+    box-shadow: 2px 2px 5px $box-shadow_color;
+  }
+  .header__menu ul li {
+    display: block;
+    padding: 15px 25px;
+    font-size: 18px;
+  }
+  .header__menu__phones {
+    display: inline-block;
+    margin: 15px;
+    color: $text_color_blue;
+    font-weight: bold;
+  }
+  .search {
+    width: 60%;
+  }
+  .header__phones {
+    display: none;
+  }
+  .header__categories__wrapper {
+    width: 100%;
+  }
+  .profile__btn-desktop {
+    font-size: 18px;
+    display: none;   
+  }
+  .profile__btn-mobile {
+    margin: 8px 12px;
+  }
+  .profile__btn-title {
+    display: none;
+  }
+}
+  
+  
+/* ---------- MEDIA SCREEN -- TABLET ---------- */
+@media screen and (min-width: 701px){
+  .header__menu ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .header__menu__btn,
+  .header__menu__phones,
+  .profile__btn-mobile {
+    display: none;
+  }
+  .search {
+    width: 55%;
+  }
+  .header__categories__wrapper {
+    width: 200px;
+  }
+  .profile__btn-desktop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .profile__btn-title {
+    display: inline-block;
+  }
+}
+  
+  
+/* ---------- MEDIA SCREEN -- DESKTOP ---------- */
+@media screen and (min-width: 992px) {
+  .header__menu ul {
+    display: flex;
+    justify-content: flex-end;
+    width: 992px;
+    margin: 0 auto;
+  }
+  .header__menu__btn,
+  .header__menu__phones,
+  .profile__btn-mobile {
+    display: none;
+  }
+  .header__second-row,
+  .header__third-row {
+    max-width: 1200px;
+  }
+  .search {
+    width: 70%;
+  }
+  .header__categories__wrapper {
+    width: 300px;
+  }
+  .profile__btn-desktop {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .profile__btn-title {
+    display: inline-block;
+  }
+}
+  
+  
+/* ---------- HEADER ---------- */
+header {
+  margin: 0 auto 20px auto;
+  width: 100%;
+  font-size: 14px;
+}
+.header__menu {
+  border-bottom: 1px solid $border_color_light;
+  background-color: $main_menu_background_color;
+}
+.header__menu ul li {
+  list-style: none;
+  margin: 5px 7px;
+}
+#menu__btn__checkbox {
+  display: none;
+}
+#menu__btn__checkbox:checked + ul {
+  display: block;
+}
+.header__second-row,
+.header__third-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 10px auto;
+  padding: 0 15px;
+}
+.logo {
+    font-size: 28px;
+    margin: 12px;
+}
+.logo a {
+    text-decoration: none;
+    color: $text_color_blue;
+}
+.search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid $border_color_dark;
+  border-radius: 3px;
+  height: 35px;
+}
+.search__input {
+  border: none;
+  outline: none;
+  padding: 0 10px;
+  font-size: 16px;
+  width: 93%;
+}
+.search__button {
+  color: $text_color_grey;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.search__keyword {
+  margin: 5px;
+  color: $text_color_grey;
+}
+.search__remove-button {
+  margin-left: 5px;
+  color: $text_color_grey;
+}
+.header__phones {
+  width: 160px;
+  color: $text_color_blue;
+}
+.header__categories__wrapper {
+  position: relative;
+}
+.header__categories {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid $border_color_dark;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+.header__categories__btn {
+  font-size: 16px;
+}
+.header__categories h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  width: 91%;
+}
+.header__categories__list {
+  position: absolute;
+  display: none;
+  top: 48px;
+  left: 0;
+  background-color: $background_color_white;
+  box-shadow: 2px 2px 5px $box-shadow_color;
+  z-index: 200;
+}
+.header__categories__list div {
+  font-weight: normal;
+  margin: 5px;
+}
+#categories__btn__checkbox {
+  display: none;
+}
+#categories__btn__checkbox:checked + span {
+  display: block;
+}
+.profile__btn-desktop {
+  padding: 5px 10px;
+  border: 1px solid $border_color_dark;
+  border-radius: 3px;
+  color: $text_color_black;
+  cursor: pointer;
+}
+.profile__btn-mobile {
+  color: $text_color_black;
+}
+.profile__btn-title {
+  margin-left: 15px;
+}
+.add__button {
+    border: 1px solid $border_color_dark;
+    border-radius: 3px;
+    color: $text_color_blue;
+    padding: 2px 5px;
+    font-weight: 500;
+}
+.add__button:hover {
+    border: 1px solid $border_color_blue;
+    background-color: $background_color_blue;
+    color: $text_color_white;
+}
+
+
+
+
+/* ---------- HEADER ---------- */
+

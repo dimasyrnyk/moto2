@@ -1,0 +1,40 @@
+{
+  "name": "moto2",
+  "author": "Dimitri Syrnyk <syrnykdmitriy@gmail.com>",
+  "version": "1.0.0",
+  "description": "SPA with chinese scooter parts and electric bicycles.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "server": "nodemon index.js",
+    "build": "npm install && npm run client:install && npm run client:build",
+    "client:install": "npm install --prefix ../client",
+    "client:build": "npm run build --prefix ../client",
+    "client": "npm run start --prefix ../client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [
+    "moto",
+    "scooter",
+    "parts",
+    "electric",
+    "bicycles"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.1",
+    "nodemailer": "^6.5.0",
+    "path-to-regexp": "^6.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
+  }
+}

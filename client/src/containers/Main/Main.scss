@@ -1,0 +1,175 @@
+@import "../../styles/colors.scss";
+
+/* ---------- MEDIA SCREEN -- MOBILE ---------- */
+@media (max-width: 650px) {
+  .list {
+    display: block;
+  }
+  .product_card {
+    margin: 20px 0;
+  }
+  .categories_list a,
+  .subcategories_list a {
+    font-size: 16px;
+  }
+  .categories_menu {
+    display: none;
+  }
+}
+
+/* ---------- MEDIA SCREEN -- SMALL TABLET ---------- */
+@media screen and (min-width: 651px) {
+  .list {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-items: center;
+  }
+  .product_card {
+    margin: 10px;
+  }
+  .categories_list a,
+  .subcategories_list a {
+    font-size: 16px;
+  }
+  .categories_menu {
+    display: none;
+  }
+}
+/* ---------- MEDIA SCREEN -- LARGE TABLET ---------- */
+@media screen and (min-width: 780px) {
+  .list {
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    justify-items: center;
+  }
+  .product_card {
+    margin: 10px;
+  }
+  .categories_list a,
+  .subcategories_list a {
+    font-size: 16px;
+  }
+  .categories_menu {
+    display: block;
+  }
+}
+
+/* ---------- MEDIA SCREEN -- SMALL DESKTOP ---------- */
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 1200px;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    justify-items: center;
+  }
+  .product_card {
+    margin: 15px;
+  }
+  .categories_list a,
+  .subcategories_list a {
+    font-size: 14px;
+  }
+  .categories_menu {
+    display: block;
+  }
+}
+/* ---------- MEDIA SCREEN -- LARGE DESKTOP ---------- */
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+  .list {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    justify-items: center;
+  }
+  .product_card {
+    margin: 15px;
+  }
+  .categories_list a,
+  .subcategories_list a {
+    font-size: 14px;
+  }
+  .categories_menu {
+    display: block;
+  }
+}
+
+/* ---------- MAIN ---------- */
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+  min-height: 68vh;
+}
+.home-page__first-row {
+  display: flex;
+  margin: 20px 0;
+}
+.categories {
+  width: 295px;
+}
+.categories_list {
+  list-style: none;
+  padding-left: 30px;
+}
+.categories_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+}
+.categories_link:hover {
+  background-color: $links_hover_background_color;
+  text-decoration: underline;
+}
+.categories_link svg {
+  font-size: 10px;
+}
+.subcategories_list {
+  list-style: none;
+  padding-left: 30px;
+}
+.categories_header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 120px;
+  border: 1px solid $border_color_dark;
+  border-radius: 3px;
+  padding: 5px;
+}
+.categories_header i {
+  margin: 5px 10px;
+}
+.categories_header h1 {
+  font-size: 20px;
+  margin: 0 5px;
+}
+.categories_menu {
+  flex: 2;
+  border: 1px solid $border_color_light;
+  background-image: url("https://cdn.shopify.com/s/files/1/0559/2852/0911/articles/the-best-kids-electric-scooters-that-youll-love-335257_1024x1024.jpg?v=1636348817");
+  background-size: cover;
+  margin-left: 30px;
+}
+.list {
+  padding: 0;
+}
+.list__title {
+  font-size: 18px;
+  color: $text_color_black;
+  margin: 10px;
+}
+
+/* ---------- MAIN NAVIGATION ---------- */
+.main__navigation {
+  display: flex;
+  margin: 10px 0;
+  padding: 10px;
+}
+.main__navigation__link {
+  margin-right: 15px;
+  font-size: 16px;
+}
