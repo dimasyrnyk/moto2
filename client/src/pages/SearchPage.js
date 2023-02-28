@@ -10,7 +10,7 @@ import { productsSearchLoad } from "./../store/products/actions";
 export default function SearchPage() {
   const { searchValue, products, app } = useSelector((state) => ({
     searchValue: state.products.searchValue,
-    product: state.products.searchProducts,
+    products: state.products.searchProducts,
     app: state.app,
   }));
   const dispatch = useDispatch();
