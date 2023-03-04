@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import "./Product.scss";
 import { oneProductLoad, productRemove } from "../../store/products/actions";
+import ProductAddToCartBtn from "./ProductAddToCartBtn";
 import { AppLoader } from "../AppLoader/AppLoader";
 import Alert from "../Alert/Alert";
 
@@ -14,6 +15,7 @@ export default function ProductPage() {
     product: state.products.oneProduct,
     app: state.app,
   }));
+  const isAdmin = activeUser.info.roles.includes("ADMIN");
   const productId = useParams().id;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -43,7 +45,7 @@ export default function ProductPage() {
       {product.hasOwnProperty("_id") ? (
         <div>
           <h2 className="product__title">{product.title}</h2>
-          {activeUser.info.roles.includes("ADMIN") && (
+          {isAdmin && (
             <div className="admin__controls">
               <input
                 type="button"
@@ -73,6 +75,7 @@ export default function ProductPage() {
               <p className={Status[product.status].styles}>
                 {Status[product.status].title}
               </p>
+              <ProductAddToCartBtn product={product} />
             </span>
             <span className="product__short-desc">
               <h5>Опис</h5>

@@ -17,7 +17,14 @@ import Search from "../../components/Search/Search";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const activeUser = useSelector((state) => state.activeUser);
+  const { isAuth, isAdmin, authUserCartTotal, nonAuthUserCartTotal } =
+    useSelector((state) => ({
+      isAuth: state.activeUser.auth,
+      isAdmin: state.activeUser.info.roles.includes("ADMIN"),
+      authUserCartTotal: state.activeUser.cart.total,
+      nonAuthUserCartTotal: state.cart.total,
+    }));
+  const total = isAuth ? authUserCartTotal : nonAuthUserCartTotal;
   const categoriesRef = useRef(null);
 
   useEffect(() => {
@@ -37,6 +44,13 @@ export default function Header() {
     if (window.location.pathname !== "/") {
       setIsOpen(!isOpen);
     }
+  };
+
+  const formatPriceToUAH = (price) => {
+    return price.toLocaleString("uk-UA", {
+      style: "currency",
+      currency: "UAH",
+    });
   };
 
   return (
@@ -88,10 +102,10 @@ export default function Header() {
           className="profile__btn-desktop"
         >
           <FontAwesomeIcon icon={faShoppingCart} />
-          <span className="profile__btn-title">Кошик 0.00 ₴</span>
+          <span className="profile__btn-title">{formatPriceToUAH(total)}</span>
         </Link>
         <LoginModal classes={"profile__btn-desktop"} />
-        {activeUser.info.roles.includes("ADMIN") && (
+        {isAdmin && (
           <Link
             to="/add/new-product"
             className="profile__btn-desktop"
@@ -106,5 +120,8 @@ export default function Header() {
 }
 
 Header.propTypes = {
-  activeUser: PropTypes.object,
+  isAuth: PropTypes.bool,
+  isAdmin: PropTypes.bool,
+  authUserCartTotal: PropTypes.string,
+  nonAuthUserCartTotal: PropTypes.string,
 };

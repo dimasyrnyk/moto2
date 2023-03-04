@@ -9,6 +9,9 @@
   border-radius: 3px;
   padding: 10px;
   margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .card__remove-btn {
   position: absolute;

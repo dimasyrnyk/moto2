@@ -5,6 +5,7 @@ export const PRODUCTS_SEARCH_LOAD = "PRODUCTS_SEARCH_LOAD";
 export const PRODUCT_CLEAR_SEARCH_VALUE = "PRODUCT_CLEAR_SEARCH_VALUE";
 export const PRODUCT_LOAD = "PRODUCT_LOAD";
 export const PRODUCTS_LOAD = "PRODUCTS_LOAD";
+export const PRODUCTS_CART_LOAD = "PRODUCTS_CART_LOAD";
 export const PRODUCTS_LOAD_HOME_PAGE = "PRODUCTS_LOAD_HOME_PAGE";
 export const PRODUCT_CREATE = "PRODUCT_CREATE";
 export const PRODUCT_EDIT = "PRODUCT_EDIT";
@@ -21,7 +22,6 @@ export const clearSearchValues = () => ({
 
 export function productsSearchLoad(value) {
   return async (dispatch) => {
-    dispatch(showLoader());
     const response = await fetch(`/api/product/search/s?q=${value}`, {
       method: "GET",
       headers: {
@@ -32,13 +32,41 @@ export function productsSearchLoad(value) {
     const json = await response.json();
 
     if (!response.ok) {
-      dispatch(hideLoader());
       dispatch(
         showAlert({ text: "Товари не завантажено", color: "alert_red" })
       );
     } else {
       dispatch({ type: PRODUCTS_SEARCH_LOAD, payload: json });
-      dispatch(hideLoader());
+    }
+  };
+}
+
+export function productsCartLoad(data) {
+  return async (dispatch) => {
+    const productsIds = data.map((i) => i._id);
+    const response = await fetch(
+      `/api/product/cart/p?ids=${productsIds.join(",")}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    const json = await response.json();
+
+    if (!response.ok) {
+      dispatch(
+        showAlert({ text: "Товари не завантажено", color: "alert_red" })
+      );
+    } else {
+      const newData = data.map((p) => {
+        const product = json.find((i) => i._id === p._id);
+        return { ...p, price: product.price, countInStock: product.quantity };
+      });
+
+      dispatch({ type: PRODUCTS_CART_LOAD, payload: newData });
     }
   };
 }

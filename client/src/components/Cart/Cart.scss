@@ -1,0 +1,52 @@
+@import "../../styles/colors.scss";
+
+/* ---------- MEDIA SCREEN -- MOBILE ---------- */
+@media (max-width: 700px) {
+  .cart__item {
+    flex-direction: column;
+    max-width: 100%;
+  }
+}
+
+/* ---------- MEDIA SCREEN -- TABLET & DESKTOP ---------- */
+@media screen and (min-width: 701px) {
+  .cart__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .cart__item {
+    align-items: center;
+    justify-content: space-between;
+    width: 600px;
+  }
+  .item__info {
+    width: 350px;
+  }
+}
+.cart__item {
+  display: flex;
+  margin: 20px 0;
+}
+.item__img {
+  max-width: 200px;
+}
+.item__info {
+  max-width: 350px;
+}
+.item__remove-btn {
+  border: 1px solid $border_color_blue;
+  border-radius: 3px;
+  padding: 5px;
+  color: $text_color_blue;
+  font-size: 18px;
+}
+.item__remove-btn:hover {
+  border-color: $border_color_light;
+  color: $text_color_grey;
+}
+.cart__total-price {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}

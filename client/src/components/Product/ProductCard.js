@@ -7,11 +7,14 @@ import PropTypes from "prop-types";
 
 import "./ProductCard.scss";
 import { productRemove } from "../../store/products/actions";
+import ProductAddToCartBtn from "./ProductAddToCartBtn";
 
-/**/
 export default function ProductCard({ product }) {
-  const activeUser = useSelector((state) => state.activeUser.info);
-  const token = useSelector((state) => state.activeUser.token);
+  const { isAdmin, token } = useSelector((state) => ({
+    isAdmin: state.activeUser.info.roles.includes("ADMIN"),
+    token: state.activeUser.token,
+  }));
+  const editPath = "/product/" + product._id + "/edit";
   const dispatch = useDispatch();
 
   const Status = Object.freeze({
@@ -20,8 +23,9 @@ export default function ProductCard({ product }) {
     3: { title: "Очікується", styles: "isnow_orange" },
   });
 
-  const editPath = "/product/" + product._id + "/edit";
-  const isAdmin = activeUser.roles.includes("ADMIN");
+  const handleRemove = () => {
+    dispatch(productRemove({ _id: product._id, token }));
+  };
 
   return (
     <li className="card">
@@ -29,7 +33,7 @@ export default function ProductCard({ product }) {
         <>
           <FontAwesomeIcon
             className="card__remove-btn"
-            onClick={() => dispatch(productRemove({ _id: product._id, token }))}
+            onClick={handleRemove}
             icon={faTrash}
           />
           <Link to={editPath}>
@@ -55,13 +59,13 @@ export default function ProductCard({ product }) {
       <span className={Status[product.status].styles}>
         {Status[product.status].title}
       </span>
-      <button className="card__btn">Додати в кошик</button>
+      <ProductAddToCartBtn product={product} />
     </li>
   );
 }
 
 ProductCard.propTypes = {
-  activeUser: PropTypes.object,
+  isAdmin: PropTypes.bool,
   token: PropTypes.string,
   product: PropTypes.object.isRequired,
   productRemove: PropTypes.func,

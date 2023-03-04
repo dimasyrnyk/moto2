@@ -71,6 +71,18 @@ router.post("/create", role(["ADMIN"]), async (req, res) => {
   }
 });
 
+router.get("/cart/p", async (req, res) => {
+  try {
+    const { ids } = req.query;
+
+    const products = await Product.find({ _id: { $in: ids.split(",") } });
+
+    res.json(products);
+  } catch (e) {
+    res.status(500).json({ message: "Товарів не знайдено" });
+  }
+});
+
 router.get("/search/s", async (req, res) => {
   try {
     const searchValue = req.query.q;

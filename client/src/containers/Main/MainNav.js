@@ -16,17 +16,17 @@ export default function MainNav() {
   let { url } = useRouteMatch();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const link = url.split("/").pop();
+  // useEffect(() => {
+  //   const link = url.split("/").pop();
 
-    if (link === product._id) {
-      dispatch(removeNavLink());
-      addToNavList(product.category, true);
-    } else if (url !== "/" && categories.length) {
-      dispatch(removeNavLink());
-      addToNavList(link);
-    }
-  }, [url, product._id]);
+  //   if (link === product._id) {
+  //     dispatch(removeNavLink());
+  //     addToNavList(product.category, true);
+  //   } else if (url !== "/" && categories.length) {
+  //     dispatch(removeNavLink());
+  //     addToNavList(link);
+  //   }
+  // }, [url, product._id]);
 
   const addToNavList = (link, showLink = false) => {
     const cat = categories.find((i) => i.link === link);

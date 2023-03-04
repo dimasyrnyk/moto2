@@ -11,7 +11,7 @@ router.get("/filter/:value", auth, async (req, res) => {
 
     res.json(users);
   } catch (e) {
-    res.status(500).json({ message: "Something went wrong, try again" });
+    res.status(500).json({ message: "Щось пішло не так, спробуйте знову" });
   }
 });
 
@@ -21,7 +21,20 @@ router.get("/:id", auth, async (req, res) => {
 
     res.json(user);
   } catch (e) {
-    res.status(500).json({ message: "Something went wrong, try again" });
+    res.status(500).json({ message: "Щось пішло не так, спробуйте знову" });
+  }
+});
+
+router.patch("/update-cart/:id", auth, async (req, res) => {
+  try {
+    const { cart } = req.body;
+    console.log(cart);
+
+    await User.findOneAndUpdate({ _id: req.params.id }, { cart });
+
+    res.status(200).json({ message: "Зміни в кошику були успішно збережені" });
+  } catch (e) {
+    res.status(500).json({ message: "Щось пішло не так" });
   }
 });
 

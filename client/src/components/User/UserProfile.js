@@ -1,28 +1,39 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 import "./UserProfile.scss";
+import { AppLoader } from "../AppLoader/AppLoader";
 import {
   userSignOut,
   userActiveLoadData,
 } from "./../../store/activeuser/actions";
 
 export default function UserProfile() {
+  const [isLoading, setIsLoading] = useState(true);
   const activeUser = useSelector((state) => state.activeUser);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!activeUser.info.hasOwnProperty("email")) {
       dispatch(userActiveLoadData(activeUser));
+    } else if (activeUser.info.hasOwnProperty("email")) {
+      setIsLoading(false);
     }
-  }, [activeUser, dispatch]);
+  }, [activeUser]);
 
   const signOut = () => {
-    dispatch(userSignOut());
-    localStorage.removeItem("activeUser");
+    dispatch(
+      userSignOut({
+        token: activeUser.token,
+        cart: activeUser.cart,
+        userId: activeUser.userId,
+      })
+    );
   };
+
+  if (isLoading) return <AppLoader />;
 
   return (
     <div className="user-page__container">
@@ -39,7 +50,12 @@ export default function UserProfile() {
           <p>{activeUser.info.phone}</p>
         </span>
       </span>
-      <p>Мій кошик</p>
+      <Link
+        to="/cart"
+        className="login_form_nav_btn"
+      >
+        <p>Мій кошик</p>
+      </Link>
       <p>Мої замовлення</p>
       <Link
         to="/"

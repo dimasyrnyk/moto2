@@ -7,12 +7,15 @@ import {
   PRODUCT_EDIT,
   PRODUCT_LOAD,
   PRODUCTS_LOAD,
+  PRODUCTS_CART_LOAD,
   PRODUCTS_LOAD_HOME_PAGE,
 } from "./actions";
 
 const initialState = {
   homePageProducts: [],
   loadProducts: [],
+  cartProducts: [],
+  cartProductsTotal: 0,
   searchProducts: [],
   searchValue: null,
   oneProduct: {},
@@ -30,6 +33,14 @@ export default function productsReducer(state = initialState, action) {
       return { ...state, oneProduct: action.payload };
     case PRODUCTS_LOAD:
       return { ...state, loadProducts: action.payload };
+    case PRODUCTS_CART_LOAD:
+      let total = 0;
+      [...action.payload].forEach((i) => (total = total + i.price));
+      return {
+        ...state,
+        cartProducts: action.payload,
+        cartProductsTotal: total,
+      };
     case PRODUCTS_LOAD_HOME_PAGE:
       return { ...state, homePageProducts: action.payload };
     case PRODUCT_CREATE:
