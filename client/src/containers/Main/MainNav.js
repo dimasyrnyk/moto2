@@ -15,18 +15,25 @@ export default function MainNav() {
   }));
   let { url } = useRouteMatch();
   const dispatch = useDispatch();
+  const isLoaded = categories.length > 0;
 
-  // useEffect(() => {
-  //   const link = url.split("/").pop();
+  useEffect(() => {
+    const link = url.split("/").pop();
 
-  //   if (link === product._id) {
-  //     dispatch(removeNavLink());
-  //     addToNavList(product.category, true);
-  //   } else if (url !== "/" && categories.length) {
-  //     dispatch(removeNavLink());
-  //     addToNavList(link);
-  //   }
-  // }, [url, product._id]);
+    const setNavlinks = () => {
+      if (link === product._id) {
+        dispatch(removeNavLink());
+        addToNavList(product.category, true);
+      } else if (url !== "/" && categories.length) {
+        dispatch(removeNavLink());
+        addToNavList(link);
+      }
+    };
+
+    if (isLoaded) {
+      setNavlinks();
+    }
+  }, [url, product._id, isLoaded]);
 
   const addToNavList = (link, showLink = false) => {
     const cat = categories.find((i) => i.link === link);
