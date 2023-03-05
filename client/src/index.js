@@ -9,12 +9,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import rootReducer from "./store/reducers";
 import App from "./App";
 
+const composeWithDevTools =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 render(
