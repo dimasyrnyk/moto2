@@ -54,7 +54,7 @@ export default function RergisterForm({ setValue }) {
       firstname: form.firstName,
       lastname: form.lastName,
       phone: form.phone,
-      avatar: "./client/new_user.png",
+      avatar: "https://img.freepik.com/free-icon/user_318-159711.jpg?w=360",
     };
     dispatch(userSignUp(newUser));
   };
