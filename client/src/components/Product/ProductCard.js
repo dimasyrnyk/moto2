@@ -6,6 +6,7 @@ import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
 import "./ProductCard.scss";
+import { useFormatUAH } from "../../hooks/format.hook";
 import { productRemove } from "../../store/products/actions";
 import ProductAddToCartBtn from "./ProductAddToCartBtn";
 
@@ -14,6 +15,7 @@ export default function ProductCard({ product }) {
     isAdmin: state.activeUser.info.roles.includes("ADMIN"),
     token: state.activeUser.token,
   }));
+  const formattedPrice = useFormatUAH(product.price);
   const editPath = "/product/" + product._id + "/edit";
   const dispatch = useDispatch();
 
@@ -54,7 +56,7 @@ export default function ProductCard({ product }) {
       </Link>
       <div className="card__spec">
         <span className="card__code">Код: {product.code}</span>
-        <span className="card__price">{product.price} грн</span>
+        <span className="card__price">{formattedPrice}</span>
       </div>
       <span className={Status[product.status].styles}>
         {Status[product.status].title}

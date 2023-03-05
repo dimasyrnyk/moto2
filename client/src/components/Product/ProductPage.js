@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
@@ -16,6 +16,7 @@ export default function ProductPage() {
     app: state.app,
   }));
   const isAdmin = activeUser.info.roles.includes("ADMIN");
+  const isProduct = product.hasOwnProperty("_id");
   const productId = useParams().id;
   const history = useHistory();
   const dispatch = useDispatch();
@@ -37,12 +38,21 @@ export default function ProductPage() {
     history.goBack();
   };
 
+  const formatPriceToUAH = (price) => {
+    return price.toLocaleString("uk-UA", {
+      style: "currency",
+      currency: "UAH",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    });
+  };
+
   if (app.loading) return <AppLoader />;
 
   return (
     <>
       {app.alertMessage && <Alert />}
-      {product.hasOwnProperty("_id") ? (
+      {isProduct ? (
         <div>
           <h2 className="product__title">{product.title}</h2>
           {isAdmin && (
@@ -69,12 +79,16 @@ export default function ProductPage() {
               src={product.src}
               alt="Product item"
             />
-            <span className="product__price-section">
-              <h4>Ціна</h4>
-              <p className="product__price">{product.price} ₴</p>
-              <p className={Status[product.status].styles}>
-                {Status[product.status].title}
-              </p>
+            <span>
+              <span className="product__price-section">
+                <h4>Ціна</h4>
+                <p className="product__price">
+                  {formatPriceToUAH(product.price)}
+                </p>
+                <p className={Status[product.status].styles}>
+                  {Status[product.status].title}
+                </p>
+              </span>
               <ProductAddToCartBtn product={product} />
             </span>
             <span className="product__short-desc">

@@ -10,6 +10,7 @@ import {
 import PropTypes from "prop-types";
 
 import "./Header.scss";
+import { useFormatUAH } from "../../hooks/format.hook";
 import CategoriesMenu from "../../components/Categories/Menu/CategoriesMenu";
 import Navigation from "../../components/Navigation/Navigation";
 import LoginModal from "../../components/LoginModal/LoginModal";
@@ -25,6 +26,7 @@ export default function Header() {
       nonAuthUserCartTotal: state.cart.total,
     }));
   const total = isAuth ? authUserCartTotal : nonAuthUserCartTotal;
+  const formattedTotalPrice = useFormatUAH(total);
   const categoriesRef = useRef(null);
 
   useEffect(() => {
@@ -44,13 +46,6 @@ export default function Header() {
     if (window.location.pathname !== "/") {
       setIsOpen(!isOpen);
     }
-  };
-
-  const formatPriceToUAH = (price) => {
-    return price.toLocaleString("uk-UA", {
-      style: "currency",
-      currency: "UAH",
-    });
   };
 
   return (
@@ -102,7 +97,7 @@ export default function Header() {
           className="profile__btn-desktop"
         >
           <FontAwesomeIcon icon={faShoppingCart} />
-          <span className="profile__btn-title">{formatPriceToUAH(total)}</span>
+          <span className="profile__btn-title">{formattedTotalPrice}</span>
         </Link>
         <LoginModal classes={"profile__btn-desktop"} />
         {isAdmin && (
